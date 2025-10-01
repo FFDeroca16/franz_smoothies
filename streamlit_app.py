@@ -43,9 +43,7 @@ ingredients_list = st.multiselect(
 )
 
 # New section to display smoothiefroot nutrition information
-smoothiefroot_response = requests.get('https://my.smoothiefroot.com/api/fruit/watermelon')
 #st.text(smoothiefroot_response.json())
-smoothiefroot_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
 if ingredients_list:
     # st.write(ingredients_list)
@@ -54,6 +52,10 @@ if ingredients_list:
 
     for fruit_chosen in ingredients_list:
         ingredient_string += fruit_chosen + ' '
+        smoothiefroot_response = requests.get('https://my.smoothiefroot.com/api/fruit/watermelon')
+        smoothiefroot_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+
+
         
     # st.write(ingredient_string)
 
