@@ -1,5 +1,6 @@
 # Import python packages
 import streamlit as st
+import requests
 #from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
 
@@ -40,6 +41,10 @@ ingredients_list = st.multiselect(
     max_selections=5,
     
 )
+
+# New section to display smoothiefroot nutrition information
+smoothiefroot_response = requests.get('https://my.smoothiefroot.com/api/fruit/watermelon')
+st.text(smoothiefroot_response)
 
 if ingredients_list:
     # st.write(ingredients_list)
